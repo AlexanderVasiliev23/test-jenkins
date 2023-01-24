@@ -54,4 +54,11 @@ data:
             """
         }
     }
+    stages {
+        stage('build') {
+            steps {
+                sh 'echo "Hi A"'
+            }
+        }
+    }
 }
