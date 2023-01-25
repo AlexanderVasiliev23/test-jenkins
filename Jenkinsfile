@@ -23,21 +23,6 @@ spec:
           value: "admin"
         - name: POSTGRES_PASSWORD
           value: "df324XdCE"
-      volumeMounts:
-        - name: initdb
-          mountPath: /docker-entrypoint-initdb.d
-  volumes:
-    - name: initdb
-      configMap:
-        name: initdb-config
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: initdb-config
-data:
-  initdb.sql: |
-    CREATE DATABASE actor
 """
         }
     }
@@ -45,9 +30,16 @@ data:
         stage('build') {
             steps {
                 container ('postgres-billing') {
-                    sh 'echo "Hi A"'
+                    sh 'createdb -U admin actor'
                 }
             }
         }
+        stage('check') {
+              steps {
+                  container ('postgres-billing') {
+                      sh "psql -U admin -d actor -c 'SELECT * FROM mytable'"
+                  }
+              }
+          }
     }
 }
