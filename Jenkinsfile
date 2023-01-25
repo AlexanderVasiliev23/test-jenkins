@@ -16,9 +16,6 @@ spec:
       ports:
         - containerPort: 5432
           protocol: TCP
-      tty: true
-      command:
-      - cat
       env:
         - name: POSTGRES_DB
           value: "billing"
