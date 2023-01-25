@@ -1,5 +1,6 @@
 pipeline {
     agent {
+    label 'master'
         kubernetes {
             defaultContainer 'jnlp'
             yaml """
@@ -23,7 +24,7 @@ spec:
           value: "admin"
         - name: POSTGRES_PASSWORD
           value: "df324XdCE"
-            """
+"""
         }
     }
     stages {
