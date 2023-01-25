@@ -24,7 +24,7 @@ spec:
         - name: POSTGRES_PASSWORD
           value: "df324XdCE"
       command: [ "/bin/sh","-c" ]
-      args: [ "sleep 20; createdb -U admin actor" ]
+      args: [ "createdb -U admin actor" ]
 """
         }
     }
