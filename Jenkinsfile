@@ -30,27 +30,6 @@ spec:
     - name: initdb
       configMap:
         name: initdb-config
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: my-service
-spec:
-  type: LoadBalancer
-  selector:
-    name: my-pod-name-label
-  ports:
-    - protocol: TCP
-      port: 5432
-      targetPort: 5432
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: initdb-config
-data:
-  initdb.sql: |
-    CREATE DATABASE actor
             """
         }
     }
