@@ -36,7 +36,9 @@ spec:
     stages {
         stage('build') {
             steps {
-                sh 'echo "Hi A"'
+                container ('postgres-billing') {
+                    sh 'echo "Hi A"'
+                }
             }
         }
     }
