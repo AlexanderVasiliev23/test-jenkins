@@ -23,10 +23,8 @@ spec:
           value: "admin"
         - name: POSTGRES_PASSWORD
           value: "df324XdCE"
-        - name: JENKINS_URL
-          value: http://jenkins.operations:8080
-        - name: JENKINS_TUNNEL
-          value: jenkins-agent.operations:50000
+      command: [ "/bin/sh","-c" ]
+      args: [ "sleep 20; createdb -U admin actor" ]
 """
         }
     }
