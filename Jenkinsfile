@@ -23,8 +23,21 @@ spec:
           value: "admin"
         - name: POSTGRES_PASSWORD
           value: "df324XdCE"
-      command: [ "/bin/sh","-c" ]
-      args: [ "sleep 20; createdb -U admin actor" ]
+      volumeMounts:
+        - name: initdb
+          mountPath: /docker-entrypoint-initdb.d
+  volumes:
+    - name: initdb
+      configMap:
+        name: initdb-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: initdb-config
+data:
+  initdb.sql: |
+    CREATE DATABASE actor
 """
         }
     }
