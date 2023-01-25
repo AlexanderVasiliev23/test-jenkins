@@ -1,6 +1,5 @@
 pipeline {
     agent {
-    label 'master'
         kubernetes {
             defaultContainer 'jnlp'
             yaml """
